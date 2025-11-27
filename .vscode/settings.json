@@ -25,13 +25,19 @@
     "editor.tabSize": 4,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.origanizeImports": "explicit"
+    }
   },
 
   // （TSX も Prettier で保存時フォーマットしたい場合）
   "[typescriptreact]": {
     "editor.tabSize": 4,
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.origanizeImports": "explicit"
+    }
   },
 
   // ★ PHP 向けオーバーライド（ここで Pint を指定）
