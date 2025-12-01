@@ -1,0 +1,53 @@
+/* src/styles/kanban.css */
+@layer components {
+  .kanban-board {
+    @apply flex flex-col gap-4;
+  }
+
+  .kanban-board__columns {
+    @apply grid gap-4 md:grid-cols-4;
+  }
+
+  .kanban-column {
+    background-color: var(--color-bg-surface);
+    border-color: var(--color-border-subtle);
+    @apply flex flex-col gap-3 rounded-xl p-3 border;
+
+  }
+
+  .kanban-column__header {
+    @apply flex items-center justify-between gap-2;
+  }
+
+  .kanban-column__title {
+    @apply text-sm font-semibold;
+  }
+
+  .kanban-column__badge {
+    background-color: var(--color-bg-page);
+    color: var(--color-text-muted);
+    @apply text-xs px-2 py-0.5 rounded-full;
+  }
+
+  .kanban-column__body {
+    @apply flex flex-col gap-2;
+  }
+
+  .kanban-card {
+    @apply bg-white rounded-lg p-3 shadow-sm border border-slate-100
+      hover:shadow-md transition-shadow cursor-default;
+  }
+
+  .kanban-card__title {
+    @apply text-sm font-medium;
+  }
+
+  .kanban-card__meta {
+    color:var(--color-text-muted);
+    @apply mt-1 text-[11px] flex gap-2;
+  }
+
+  .kanban-card__tag {
+    @apply inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[10px];
+  }
+}

@@ -1,0 +1,31 @@
+/* src/styles/button.css */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center text-sm font-medium
+      transition-colors
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500
+      disabled:opacity-50 disabled:cursor-not-allowed;
+    border-radius: var(--radius-md);
+  }
+
+  .btn--primary {
+    background-color: var(--color-brand);
+    @apply text-white hover:bg-sky-700;
+  }
+
+  .btn--secondary {
+    @apply bg-slate-100 text-slate-900 hover:bg-slate-200 border border-slate-300;
+  }
+
+  .btn--ghost {
+    @apply bg-transparent text-slate-700 hover:bg-slate-100;
+  }
+
+  .btn--full {
+    @apply w-full;
+  }
+
+  .btn--normal {
+    @apply px-4 py-2;
+  }
+}

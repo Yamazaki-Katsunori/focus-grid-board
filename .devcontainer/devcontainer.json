@@ -64,7 +64,9 @@
         "eamodio.gitlens",
         "GitHub.vscode-pull-request-github",
         "github.copilot-chat",
-        "mhutchie.git-graph"
+        "mhutchie.git-graph",
+        "bradlc.vscode-tailwindcss",
+        "stylelint.vscode-stylelint"
       ],
       "settings": {
         "terminal.integrated.shell.linux": "/bin/bash",

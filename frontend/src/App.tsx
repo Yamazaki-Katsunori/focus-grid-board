@@ -1,35 +1,32 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+// src/App.tsx
+import { BaseLayout } from '@base/layout/BaseLayout';
+import { AppHeader } from '@base/header/AppHeader';
+// 将来的に @base/sidebar/Sidebar などを import
 import { ApiHealthCheck } from './components/ApiHealthCheck';
+import { FocusMainTabs } from '@domain/focusGrid/MainTabs';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <div>
-        <h1>Laravel + React DevContaienr Template</h1>
-        <ApiHealthCheck />
+    <BaseLayout
+      header={<AppHeader />}
+      // sidebar={<Sidebar />} // 後で作る
+    >
+      {/* ここに 12 カラムを使ったボード一覧やマトリクスを置いていく */}
+      {/* とりあえずはプレースホルダ */}
+      <FocusMainTabs />
+      <div className="layout-main-grid">
+        <section className="rounded-xl bg-white p-4 shadow-sm md:col-span-6">
+          メインコンテンツA
+        </section>
+        <section className="rounded-xl bg-white p-4 shadow-sm md:col-span-6">
+          メインコンテンツB
+        </section>
       </div>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+
+      {/* Laravel api checks */}
+      <h1>Laravel + React DevContaienr Template</h1>
+      <ApiHealthCheck />
+    </BaseLayout>
   );
 }
 

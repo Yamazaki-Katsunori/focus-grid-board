@@ -1,0 +1,49 @@
+/* src/styles/layout.css */
+
+/* タグそのもののベーススタイル */
+@layer base {
+  body {
+    background-color: var(--color-bg-page);
+    color: var(--color-text-main);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+}
+
+/* レイアウト用の意味的クラス群 */
+@layer components {
+  /* アプリ全体ラッパー（縦にヘッダー＋コンテンツ） */
+  .layout-app {
+    @apply min-h-screen flex flex-col;
+  }
+
+  /* 中央寄せされたメインコンテンツのコンテナ */
+  .layout-main {
+    max-width: var(--layout-max-width);
+    @apply w-full mx-auto px-4 lg:px-6 py-6;
+  }
+
+  /* 12カラムグリッド（スマホ1列、md〜で12列） */
+  .layout-main-grid {
+    @apply grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-6;
+  }
+
+  /* サイドバーありの時の2:10 レイアウト */
+  .layout-main-grid--with-sidebar {
+    /* 役割を明示する用。今は base と同じでもOK */
+  }
+
+  /* サイドバー列：md〜で 3/12、スマホでは1列分 */
+  .layout-main-sidebar {
+    @apply md:col-span-3;
+  }
+
+  /* メインコンテンツ列：md〜で 9/12 */
+  .layout-main-content {
+    @apply md:col-span-9;
+  }
+
+  /* サイドバー無しのとき単一カラム */
+  .layout-main-content-only {
+    @apply bg-transparent;
+  }
+}

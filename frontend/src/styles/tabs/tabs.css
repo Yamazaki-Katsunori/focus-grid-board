@@ -1,0 +1,37 @@
+/* src/styles/tabs.css */
+@layer components {
+  .tabs {
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .tabs__list {
+    @apply flex gap-1 overflow-x-auto;
+  }
+
+  .tabs__trigger {
+    color: var(--color-text-muted);
+    @apply inline-flex items-center gap-2 px-3 py-2 text-sm font-medium
+      border-b-2 border-transparent
+      whitespace-nowrap
+      transition-colors;
+  }
+
+  .tabs__trigger--active {
+    border-color: var(--color-brand);
+    color: var(--color-text-main);
+  }
+
+  .tabs__trigger--disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  .tabs__icon {
+    @apply w-4 h-4;
+  }
+
+  .tabs__badge {
+    background-color: var(--color-bg-page);
+    color: var(--color-text-muted);
+    @apply ml-1 rounded-full px-1.5 py-0.5 text-[10px] font-medium;
+  }
+}

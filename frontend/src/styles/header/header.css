@@ -1,0 +1,53 @@
+/* src/styles/header.css */
+@layer components {
+  .app-header {
+    height: var(--layout-header-height);
+    background-color: var(--color-bg-surface);
+    border-bottom: 1px solid var(--color-border-subtle);
+    @apply flex items-center;
+  }
+
+  .app-header__inner {
+    max-width: var(--layout-max-width);
+    @apply w-full mx-auto px-4 lg:px-6 flex items-center justify-between gap-4;
+  }
+
+  /* ← 左側（ナビ + ハンバーガー）をまとめるコンテナ */
+  .app-header__left {
+    @apply flex items-center gap-3;
+  }
+
+  .app-header__brand {
+    @apply flex items-center gap-2;
+  }
+
+  .app-header__logo {
+    @apply w-6 h-6 rounded-lg bg-emerald-600;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .app-header__title {
+    @apply text-lg font-semibold text-right;
+  }
+
+  .app-header__subtitle {
+    color: var(--color-text-muted);
+    @apply text-xs text-right;
+  }
+
+  /* ナビはデスクトップのみ表示（左側） */
+  .app-header__nav {
+    color: var(--color-text-muted);
+    @apply hidden md:flex items-center gap-4 text-sm ;
+  }
+
+  .app-header__nav-item {
+    color: var(--color-text-main);
+    @apply  cursor-pointer;
+  }
+
+  /* ハンバーガーはモバイルのみ表示（左側） */
+  .app-header__hamburger {
+    @apply md:hidden inline-flex items-center justify-center rounded-md border border-slate-300 w-9 h-9;
+  }
+}

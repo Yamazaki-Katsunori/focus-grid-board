@@ -8,6 +8,25 @@
   // frontend/ 配下に node_modules があるならパスもそこに合わせる
   "prettier.prettierPath": "frontend/node_modules/prettier/index.cjs",
 
+    // Stylelint を有効化
+  "stylelint.enable": true,
+
+  // VSCode 標準の CSS 検証はオフ
+  "css.validate": false,
+
+  // Stylelint 拡張機能に CSS を見てもらう
+  "stylelint.validate": ["css"],
+
+    // 保存時に stylelint --fix を走らせる
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "explicit"
+  },
+
+  // Tailwind CSS IntelliSense に「これは Tailwind CSS ファイルだよ」と教える
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
   "[json]": {
     "editor.tabSize": 2,
     "editor.formatOnSave": true,

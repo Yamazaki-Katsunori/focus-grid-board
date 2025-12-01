@@ -1,0 +1,40 @@
+/* src/styles/table.css */
+@layer components {
+  .data-table-wrapper {
+    background-color: var(--color-bg-surface);
+    border-color:var(--color-border-subtle) ;
+    @apply rounded-xl border overflow-hidden;
+  }
+
+  .data-table {
+    @apply w-full border-collapse;
+  }
+
+  .data-table__head {
+    @apply bg-slate-50;
+  }
+
+  .data-table__head-cell {
+    color: var(--color-text-muted);
+    border-color: var(--color-border-subtle);
+    @apply px-3 py-2 text-xs font-semibold text-left border-b;
+  }
+
+  .data-table__body-row {
+    @apply text-sm;
+  }
+
+  .data-table__body-row:nth-child(even) {
+    @apply bg-slate-50/40;
+  }
+
+  .data-table__body-cell {
+    border-color: var(--color-border-subtle);
+    @apply px-3 py-2 border-b;
+  }
+
+  .data-table__caption {
+    color:var(--color-text-muted);
+    @apply px-3 py-2 text-xs;
+  }
+}
