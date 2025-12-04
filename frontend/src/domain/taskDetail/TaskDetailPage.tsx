@@ -15,6 +15,7 @@ const MOCK_TASK: TaskDetail = {
   filter: '今週中',
   status: 'doing',
   priority: 'high',
+  quadrant: 'notUrgentNotImportant',
   createdAt: '2025-12-01 10:00',
   updatedAt: '2025-12-03 18:30',
 };

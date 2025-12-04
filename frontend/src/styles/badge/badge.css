@@ -1,0 +1,40 @@
+/* src/styles/badge.css */
+@layer components {
+  .badge {
+    @apply inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium;
+  }
+
+  .badge--muted {
+    @apply bg-slate-100 text-slate-700;
+  }
+
+  .badge--blue {
+    @apply bg-blue-100 text-blue-700;
+  }
+
+  .badge--green {
+    @apply bg-green-100 text-green-700;
+  }
+
+  .badge--red {
+    @apply bg-red-100 text-red-700;
+  }
+
+  /* 小さい色付きドット */
+  .status-dot {
+    @apply inline-block h-2 w-2 rounded-full;
+  }
+
+  .status-dot--green {
+    @apply bg-green-500;
+  }
+  .status-dot--yellow {
+    @apply bg-yellow-500;
+  }
+  .status-dot--red {
+    @apply bg-red-500;
+  }
+  .status-dot--gray {
+    @apply bg-slate-400;
+  }
+}

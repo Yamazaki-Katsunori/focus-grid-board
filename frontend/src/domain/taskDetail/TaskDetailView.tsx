@@ -1,31 +1,22 @@
 // src/domain/taskDetail/TaskDetailView.tsx
-import type { TaskDetail } from '@domain/taskDetail/taskDetailTypes';
-
-type TaskDetailViewProps = {
-  task: TaskDetail;
-};
+import { quadrantLabel, type TaskDetailViewProps } from '@domain/taskDetail/taskDetailTypes';
+import { TaskMetaBadges } from '@shared/task/TaskMetaBadges';
 
 export function TaskDetailView({ task }: TaskDetailViewProps) {
   return (
     <article className="space-y-4">
       {/* タイトル + タグ類 */}
       <header className="space-y-2">
-        <div className="flex items-center justify-between gap-3">
-          <h1 className="text-lg font-semibold">{task.title}</h1>
-          <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-xs text-slate-700">
-            {task.category}
-          </span>
-        </div>
-
-        <div className="text-text-muted flex flex-wrap items-center gap-2 text-xs">
-          <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5">
-            タグ: {task.tag}
-          </span>
-          <span className="inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5">
-            フィルター: {task.filter}
-          </span>
-          <span>ステータス: {task.status}</span>
-          <span>優先度: {task.priority}</span>
+        <h1 className="text-lg font-semibold">{task.title}</h1>
+        <TaskMetaBadges
+          category={task.category}
+          tag={task.tag}
+          filter={task.filter}
+          status={task.status}
+          priority={task.priority}
+        />
+        <div className="text-text-muted text-[11px]">
+          <span>現在の像限: {quadrantLabel(task.quadrant)}</span>
         </div>
 
         <div className="text-text-muted text-[11px]">
