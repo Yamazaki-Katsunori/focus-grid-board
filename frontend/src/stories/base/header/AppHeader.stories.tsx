@@ -5,7 +5,7 @@ import { fn } from 'storybook/test';
 import { AppHeader } from '@base/header/AppHeader';
 
 const meta = {
-  title: 'Example/AppHeader',
+  title: 'Base/AppHeader',
   component: AppHeader,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ['autodocs'],

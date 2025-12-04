@@ -1,7 +1,8 @@
 // src/stories/base/tabs/BaseTabs.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React, { useState } from 'react';
-import { BaseTabs, type BaseTabItem } from '@base/tabs/BaseTabs';
+import { BaseTabs } from '@base/tabs/BaseTabs';
+import type { BaseTabItem } from '@base/tabs/baseTabsTypes';
 
 const meta: Meta<typeof BaseTabs> = {
   title: 'Base/Tabs/BaseTabs',
