@@ -8,3 +8,9 @@ export type TaskMetaBadgesProps = {
   status: TaskStatus;
   priority: TaskPriority;
 };
+
+export type TaskQuadrant =
+  | 'urgentImportant'
+  | 'urgentNotImportant'
+  | 'notUrgentImportant'
+  | 'notUrgentNotImportant';

@@ -2,10 +2,12 @@
 import { useState } from 'react';
 import { BaseTabs } from '@base/tabs/BaseTabs';
 import type { BaseTabItem } from '@base/tabs/baseTabsTypes';
-import { FocusKanbanBoard } from '@domain/focusGrid/KanbanBoard';
-import { FocusTaskTable } from '@domain/focusGrid/TaskTable';
+import { FocusKanbanBoard } from '@domain/focusGrid/focusKanbanBoard/FocusKanbanBoard';
+import { FocusTaskTable } from '@domain/focusGrid/focusTaskTable/FocusTaskTable';
 
 import type { FocusMainTabId } from '@app-types/tabs/FocusMainTabId';
+import { FocusTaskMatrixBoard } from '@domain/focusGrid/focusTaskMatrixBoard/FocusTaskMatrixBoard';
+import { ROWS } from '../demoTaskData';
 
 // 後で他のところでも使いたくなりそうなので型は export
 
@@ -40,6 +42,49 @@ const MAIN_TABS: BaseTabItem[] = [
     badge: '準備中',
   },
 ];
+
+// const MOCK_TASKS: TaskRow[] = [
+//   {
+//     id: 't1',
+//     title: 'ガイド登録フォームの項目見直し',
+//     tag: 'フォーム改善',
+//     status: 'doing',
+//     priority: 'high',
+//     quadrant: 'urgentImportant',
+//   },
+//   {
+//     id: 't2',
+//     title: '観光スポット候補のリサーチ',
+//     tag: 'リサーチ',
+//     status: 'todo',
+//     priority: 'medium',
+//     quadrant: 'urgentNotImportant',
+//   },
+//   {
+//     id: 't3',
+//     title: 'FocusGrid UI デザイン検討',
+//     tag: 'UI/UX',
+//     status: 'waiting',
+//     priority: 'medium',
+//     quadrant: 'notUrgentImportant',
+//   },
+//   {
+//     id: 't4',
+//     title: '資料フォルダの整理',
+//     tag: '整理',
+//     status: 'inbox',
+//     priority: 'low',
+//     quadrant: 'notUrgentNotImportant',
+//   },
+//   {
+//     id: 't5',
+//     title: 'リリースメモの下書き',
+//     tag: 'ドキュメント',
+//     status: 'done',
+//     priority: 'high',
+//     quadrant: 'urgentImportant',
+//   },
+// ];
 
 // アイコンはひとまずシンプルな SVG を直書き（後で icon ライブラリに差し替えてOK）
 
@@ -108,7 +153,7 @@ export function FocusMainTabs() {
       />
 
       <div className="mt-4">
-        {activeTab === 'matrix' && <div>4象限マトリクスのコンテンツ</div>}
+        {activeTab === 'matrix' && <FocusTaskMatrixBoard tasks={ROWS} />}
         {activeTab === 'board' && <FocusKanbanBoard />}
         {activeTab === 'table' && <FocusTaskTable />}
         {activeTab === 'timeline' && <div>タイムラインのコンテンツ（将来）</div>}

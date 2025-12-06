@@ -1,7 +1,7 @@
 // src/stories/domain/focusGrid/MainTabs.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import { FocusMainTabs } from '@domain/focusGrid/MainTabs';
+import { FocusMainTabs } from '@domain/focusGrid/focusMainTab/FocusMainTabs';
 
 const meta: Meta<typeof FocusMainTabs> = {
   title: 'Domain/FocusGrid/MainTabs',

@@ -1,31 +1,7 @@
-import { BaseBadge, StatusDot } from '@base/badge/BaseBadge';
-import type { TaskMetaBadgesProps, TaskPriority, TaskStatus } from '@shared/task/TaskTypes';
-
-function statusToColor(status: TaskStatus): 'green' | 'yellow' | 'red' | 'gray' {
-  switch (status) {
-    case 'inbox':
-    case 'todo':
-      return 'gray';
-    case 'doing':
-    case 'waiting':
-      return 'yellow';
-    case 'done':
-      return 'green';
-    default:
-      return 'gray';
-  }
-}
-
-function priorityToColor(priority: TaskPriority): 'green' | 'yellow' | 'red' {
-  switch (priority) {
-    case 'low':
-      return 'green';
-    case 'medium':
-      return 'yellow';
-    case 'high':
-      return 'red';
-  }
-}
+import { BaseBadge } from '@base/badge/BaseBadge';
+import { StatusDot } from '@base/dot/StatusDot';
+import type { TaskMetaBadgesProps } from '@shared/task/TaskTypes';
+import { statusToColor, priorityToColor } from '@shared/task/taskPresentation';
 
 export function TaskMetaBadges({ category, tag, filter, status, priority }: TaskMetaBadgesProps) {
   return (
@@ -36,7 +12,7 @@ export function TaskMetaBadges({ category, tag, filter, status, priority }: Task
 
       <span className="text-text-muted inline-flex items-center gap-1">
         <StatusDot color={statusToColor(status)} />
-        <span>優先度: {status}</span>
+        <span>ステータス: {status}</span>
       </span>
       <span className="text-text-muted inline-flex items-center gap-1">
         <StatusDot color={priorityToColor(priority)} />

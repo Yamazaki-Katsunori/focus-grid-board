@@ -1,4 +1,5 @@
 // src/domain/focusGrid/KanbanBoard.tsx
+import { BaseKanbanCard } from '@base/card/BaseKanbanCard';
 import { BaseKanbanBoard } from '@base/kanban/BaseKanbanBoard';
 import type { KanbanColumnData } from '@base/kanban/baseKanbanBoardTypes';
 
@@ -37,5 +38,17 @@ const SAMPLE_COLUMNS: KanbanColumnData[] = [
 ];
 
 export function FocusKanbanBoard() {
-  return <BaseKanbanBoard columns={SAMPLE_COLUMNS} />;
+  return (
+    <BaseKanbanBoard
+      columns={SAMPLE_COLUMNS}
+      renderCard={(card) => {
+        <BaseKanbanCard
+          title={card.title}
+          meta={card.meta}
+          tag={card.tag}
+          // footer にステータスや優先度を入れても良い
+        />;
+      }}
+    />
+  );
 }

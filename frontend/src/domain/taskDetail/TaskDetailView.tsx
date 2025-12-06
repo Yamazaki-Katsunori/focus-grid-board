@@ -1,6 +1,7 @@
 // src/domain/taskDetail/TaskDetailView.tsx
-import { quadrantLabel, type TaskDetailViewProps } from '@domain/taskDetail/taskDetailTypes';
+import type { TaskDetailViewProps } from '@domain/taskDetail/taskDetailTypes';
 import { TaskMetaBadges } from '@shared/task/TaskMetaBadges';
+import { quadrantLabel } from '@shared/task/taskPresentation';
 
 export function TaskDetailView({ task }: TaskDetailViewProps) {
   return (

@@ -1,8 +1,14 @@
 import { BaseForm } from '@base/form/BaseForm';
 import { BaseFormField } from '@base/form/formField/BaseFormField';
 import { BaseInput } from '@base/input/BaseInput';
+import { BaseSelect } from '@base/select/BaseSelect';
 import { BaseTextArea } from '@base/textarea/BaseTextArea';
 import { useState } from 'react';
+import {
+  CATEGORY_OPTIONS,
+  FILTER_OPTIONS,
+  TAG_OPTIONS,
+} from '@domain/createTask/createTaskOptions';
 
 export function CreateTaskForm() {
   const [title, setTitle] = useState('');
@@ -44,45 +50,59 @@ export function CreateTaskForm() {
         />
       </BaseFormField>
 
-      <BaseFormField
-        label="タグ"
-        htmlFor="tag"
-        required
-        error={tagError}
-        helpText="タスクのタグを選択してください。"
-      >
-        <BaseInput id="tag" type="text" value={tag} onChange={(e) => setTag(e.target.value)} />
-      </BaseFormField>
+      {/* selectフィールドを 2 カラムに */}
+      <div className="grid gap-4 md:grid-cols-2">
+        <BaseFormField
+          label="タグ"
+          htmlFor="tag"
+          required
+          error={tagError}
+          helpText="タスクのタグを選択してください。"
+        >
+          <BaseSelect id="tag" value={tag} onChange={(e) => setTag(e.target.value)}>
+            <option value="">選択してください。</option>
+            {TAG_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </BaseSelect>
+        </BaseFormField>
 
-      <BaseFormField
-        label="カテゴリー"
-        htmlFor="category"
-        required
-        error={categoryError}
-        helpText="タスクのカテゴリーを選択してください。"
-      >
-        <BaseInput
-          id="category"
-          type="text"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        />
-      </BaseFormField>
+        <BaseFormField
+          label="カテゴリー"
+          htmlFor="category"
+          required
+          error={categoryError}
+          helpText="タスクのカテゴリーを選択してください。"
+        >
+          <BaseSelect id="category" value={category} onChange={(e) => setCategory(e.target.value)}>
+            <option value="">選択してください。</option>
+            {CATEGORY_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </BaseSelect>
+        </BaseFormField>
 
-      <BaseFormField
-        label="フィルター"
-        htmlFor="filter"
-        required
-        error={filterError}
-        helpText="タスクのフィルターを選択してください。"
-      >
-        <BaseInput
-          id="filter"
-          type="text"
-          value={filter}
-          onChange={(e) => setFilter(e.target.value)}
-        />
-      </BaseFormField>
+        <BaseFormField
+          label="フィルター"
+          htmlFor="filter"
+          required
+          error={filterError}
+          helpText="タスクのフィルターを選択してください。"
+        >
+          <BaseSelect id="filter" value={filter} onChange={(e) => setFilter(e.target.value)}>
+            <option value="">選択してください。</option>
+            {FILTER_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </BaseSelect>
+        </BaseFormField>
+      </div>
 
       <BaseFormField
         label="本文"

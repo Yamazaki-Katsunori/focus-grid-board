@@ -3,7 +3,7 @@ import { BaseLayout } from '@base/layout/BaseLayout';
 import { AppHeader } from '@base/header/AppHeader';
 // 将来的に @base/sidebar/Sidebar などを import
 import { ApiHealthCheck } from './components/ApiHealthCheck';
-import { FocusMainTabs } from '@domain/focusGrid/MainTabs';
+import { FocusMainTabs } from '@domain/focusGrid/focusMainTab/FocusMainTabs';
 
 function App() {
   return (
@@ -15,17 +15,10 @@ function App() {
       {/* とりあえずはプレースホルダ */}
       <FocusMainTabs />
       <div className="layout-main-grid">
-        <section className="rounded-xl bg-white p-4 shadow-sm md:col-span-6">
-          メインコンテンツA
-        </section>
-        <section className="rounded-xl bg-white p-4 shadow-sm md:col-span-6">
-          メインコンテンツB
-        </section>
+        {/* Laravel api checks */}
+        <h1>Laravel + React DevContaienr Template</h1>
+        <ApiHealthCheck />
       </div>
-
-      {/* Laravel api checks */}
-      <h1>Laravel + React DevContaienr Template</h1>
-      <ApiHealthCheck />
     </BaseLayout>
   );
 }

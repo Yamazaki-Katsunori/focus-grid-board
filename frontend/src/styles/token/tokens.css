@@ -1,12 +1,12 @@
 /* src/styles/tokens.css */
 @theme {
   /* カラー */
-  --color-bg-page: #f8fafc;        /* ページ背景（薄いグレー） */
-  --color-bg-surface: #ffffff;     /* カード・ヘッダーなどの面 */
-  --color-border-subtle: #e2e8f0;  /* 薄いボーダー */
-  --color-text-main: #0f172a;      /* ほぼ黒だけど柔らかい */
-  --color-text-muted: #64748b;     /* サブテキスト */
-  --color-brand: #0f766e;          /* アクセント（ティール系） */
+  --color-bg-page: #f8fafc; /* ページ背景（薄いグレー） */
+  --color-bg-surface: #ffffff; /* カード・ヘッダーなどの面 */
+  --color-border-subtle: #e2e8f0; /* 薄いボーダー */
+  --color-text-main: #0f172a; /* ほぼ黒だけど柔らかい */
+  --color-text-muted: #64748b; /* サブテキスト */
+  --color-brand: #0f766e; /* アクセント（ティール系） */
 
   /* レイアウト */
   --layout-max-width: 1280px;

@@ -19,4 +19,5 @@ export type KanbanColumnData = {
 export type BaseKanbanBoardProps = {
   columns: KanbanColumnData[];
   onCardClick?: (card: KanbanCardData, column: KanbanColumnData) => void;
+  renderCard?: (card: KanbanCardData, column: KanbanColumnData) => ReactNode;
 };

@@ -1,40 +1,56 @@
 /* src/styles/table.css */
 @layer components {
-  .data-table-wrapper {
-    background-color: var(--color-bg-surface);
-    border-color:var(--color-border-subtle) ;
-    @apply rounded-xl border overflow-hidden;
-  }
-
   .data-table {
-    @apply w-full border-collapse;
+    @apply w-full border-collapse text-sm;
   }
 
   .data-table__head {
-    @apply bg-slate-50;
+    @apply border-border-subtle border-b;
   }
 
-  .data-table__head-cell {
-    color: var(--color-text-muted);
-    border-color: var(--color-border-subtle);
-    @apply px-3 py-2 text-xs font-semibold text-left border-b;
+  .data-table__body {
+    @apply align-top;
   }
 
-  .data-table__body-row {
-    @apply text-sm;
+  .data-table__row {
+    @apply border-border-subtle border-b;
   }
 
-  .data-table__body-row:nth-child(even) {
-    @apply bg-slate-50/40;
+  .data-table__row:last-child {
+    @apply border-b-0;
   }
 
-  .data-table__body-cell {
-    border-color: var(--color-border-subtle);
-    @apply px-3 py-2 border-b;
+  .data-table__cell--head {
+    @apply text-text-muted px-3 py-2 text-left text-xs font-medium;
+  }
+
+  .data-table__cell {
+    @apply text-text-main px-3 py-2 text-xs;
+  }
+
+  /* コンパクト版などもここに足していける */
+  .data-table--compact .data-table__cell--head,
+  .data-table--compact .data-table__cell {
+    @apply px-2 py-1;
+  }
+
+  .data-table-wrapper {
+    @apply border-border-subtle bg-bg-surface rounded-xl border p-4 shadow-sm;
+  }
+
+  .data-table__header {
+    @apply mb-2 flex items-center justify-between;
   }
 
   .data-table__caption {
-    color:var(--color-text-muted);
-    @apply px-3 py-2 text-xs;
+    @apply text-text-main text-sm font-semibold;
+  }
+
+  .data-table__cell--menu {
+    @apply px-1 align-middle;
+  }
+
+  .data-table__cell--menu-inner {
+    @apply flex items-center;
   }
 }

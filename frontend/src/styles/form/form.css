@@ -36,14 +36,12 @@
 
   /* インプット（text/password/email 等） */
   .form-input {
-    @apply w-full rounded-lg border-border-subtle text-text-main bg-white px-3 py-2 text-sm shadow-sm
-      focus:outline-none focus:ring-2 focus:ring-brand
-      focus:border-transparent placeholder:text-text-muted;
+    @apply border-border-subtle text-text-main focus:ring-brand placeholder:text-text-muted w-full rounded-lg bg-white px-3 py-2 text-sm shadow-sm focus:border-transparent focus:ring-2 focus:outline-none;
   }
 
   /* メッセージ（補足 or エラー） */
   .form-message {
-    @apply mt-1 text-xs ml-2;
+    @apply mt-1 ml-2 text-xs;
   }
 
   .form-message--help {
@@ -57,5 +55,10 @@
   /* ボタン行（ログイン / 登録 などのボタン並べるところ） */
   .form__actions {
     @apply mt-2 flex items-center gap-2;
+  }
+
+  /* selectBox layouts */
+  .form-select {
+    @apply bg-white pr-8;
   }
 }
