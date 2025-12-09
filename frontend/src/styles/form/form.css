@@ -1,0 +1,64 @@
+/* src/styles/form.css */
+@layer components {
+  /* フォーム全体のレイアウト（縦並び・余白など） */
+  .form {
+    @apply flex flex-col gap-4;
+  }
+
+  /* 見出し・説明文などが欲しくなったとき用（オプション） */
+  .form__header {
+    @apply mb-2;
+  }
+
+  .form__title {
+    @apply text-lg font-semibold;
+  }
+
+  .form__description {
+    color: var(--color-text-muted);
+    @apply mt-1 text-sm;
+  }
+
+  /* 各フィールドのラッパ */
+  .form-field {
+    @apply flex flex-col gap-1;
+  }
+
+  .form-field__header {
+    @apply flex items-center justify-between;
+  }
+
+  /* ラベル */
+  .form-label {
+    color: var(--color-text-main);
+    @apply text-sm font-medium;
+  }
+
+  /* インプット（text/password/email 等） */
+  .form-input {
+    @apply border-border-subtle text-text-main focus:ring-brand placeholder:text-text-muted w-full rounded-lg bg-white px-3 py-2 text-sm shadow-sm focus:border-transparent focus:ring-2 focus:outline-none;
+  }
+
+  /* メッセージ（補足 or エラー） */
+  .form-message {
+    @apply mt-1 ml-2 text-xs;
+  }
+
+  .form-message--help {
+    @apply text-text-muted;
+  }
+
+  .form-message--error {
+    @apply text-red-600;
+  }
+
+  /* ボタン行（ログイン / 登録 などのボタン並べるところ） */
+  .form__actions {
+    @apply mt-2 flex items-center gap-2;
+  }
+
+  /* selectBox layouts */
+  .form-select {
+    @apply bg-white pr-8;
+  }
+}

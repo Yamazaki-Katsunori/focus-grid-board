@@ -1,0 +1,13 @@
+/* frontend/src/styles/tailwind.css */
+@import 'tailwindcss';
+
+@import './token/tokens.css';
+@import './layout/layout.css';
+@import './header/header.css';
+@import './button/button.css';
+@import './tabs/tabs.css';
+@import './kanban/kanban.css';
+@import './table/table.css';
+@import './form/form.css';
+@import './badge/badge.css';
+@import './matrix/matrix.css';

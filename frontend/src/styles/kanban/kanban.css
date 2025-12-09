@@ -1,0 +1,79 @@
+/* src/styles/kanban.css */
+@layer components {
+  .kanban-card {
+    @apply border-border-subtle flex flex-col gap-1 rounded-lg border bg-white p-3 text-xs shadow-xs;
+  }
+
+  .kanban-card__header {
+    @apply flex flex-col gap-1;
+  }
+
+  .kanban-card__title {
+    @apply text-text-main font-medium;
+  }
+
+  .kanban-card__meta {
+    @apply text-text-muted text-[11px];
+  }
+
+  .kanban-card__tag {
+    @apply mt-1 inline-flex max-w-full truncate;
+  }
+
+  .kanban-card__tag > span {
+    @apply inline-flex max-w-full truncate rounded-full bg-slate-100 px-2 py-0.5 text-[11px] text-slate-700;
+  }
+
+  .kanban-card__footer {
+    @apply text-text-muted mt-2 text-[11px];
+  }
+
+  .kanban-board {
+    @apply flex flex-col gap-4;
+  }
+
+  .kanban-board__columns {
+    @apply grid gap-4 md:grid-cols-4;
+  }
+
+  .kanban-column {
+    background-color: var(--color-bg-surface);
+    border-color: var(--color-border-subtle);
+    @apply flex flex-col gap-3 rounded-xl border p-3;
+  }
+
+  .kanban-column__header {
+    @apply flex items-center justify-between gap-2;
+  }
+
+  .kanban-column__title {
+    @apply text-sm font-semibold;
+  }
+
+  .kanban-column__badge {
+    background-color: var(--color-bg-page);
+    color: var(--color-text-muted);
+    @apply rounded-full px-2 py-0.5 text-xs;
+  }
+
+  .kanban-column__body {
+    @apply flex flex-col gap-2;
+  }
+
+  .kanban-card {
+    @apply cursor-default rounded-lg border border-slate-100 bg-white p-3 shadow-sm transition-shadow hover:shadow-md;
+  }
+
+  .kanban-card__title {
+    @apply text-sm font-medium;
+  }
+
+  .kanban-card__meta {
+    color: var(--color-text-muted);
+    @apply mt-1 flex gap-2 text-[11px];
+  }
+
+  .kanban-card__tag {
+    @apply inline-flex items-center rounded-full bg-slate-100 px-2 py-0.5 text-[10px];
+  }
+}
