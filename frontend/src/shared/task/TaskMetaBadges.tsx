@@ -6,11 +6,7 @@ import { statusToColor, priorityToColor } from '@shared/task/taskPresentation';
 export function TaskMetaBadges({ category, tag, filter, status, priority }: TaskMetaBadgesProps) {
   return (
     <div className="flex flex-wrap items-center gap-2 text-xs">
-      <BaseBadge variant="blue">カテゴリ: {category}</BaseBadge>
-      <BaseBadge variant="green">タグ: {tag}</BaseBadge>
-      <BaseBadge variant="muted">フィルター: {filter}</BaseBadge>
-
-      <span className="text-text-muted inline-flex items-center gap-1">
+      <span className="text-text-muted inline-flex items-center">
         <StatusDot color={statusToColor(status)} />
         <span>ステータス: {status}</span>
       </span>
@@ -18,6 +14,12 @@ export function TaskMetaBadges({ category, tag, filter, status, priority }: Task
         <StatusDot color={priorityToColor(priority)} />
         <span>優先度: {priority}</span>
       </span>
+
+      <div className="flex flex-wrap items-center gap-2 text-xs">
+        <BaseBadge variant="blue">カテゴリ: {category}</BaseBadge>
+        <BaseBadge variant="green">タグ: {tag}</BaseBadge>
+        <BaseBadge variant="muted">フィルター: {filter}</BaseBadge>
+      </div>
     </div>
   );
 }

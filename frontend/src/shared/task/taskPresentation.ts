@@ -1,4 +1,6 @@
-import type { TaskPriority, TaskQuadrant, TaskStatus } from '@shared/task/TaskTypes';
+import type { KanbanCardData } from '@base/kanban/baseKanbanBoardTypes';
+import type { Task, TaskPriority, TaskQuadrant, TaskStatus } from '@shared/task/TaskTypes';
+import type { TaskRow } from '@shared/task/forTaskDisplayTypes';
 
 export function statusLabel(status: TaskStatus): string {
   switch (status) {
@@ -63,4 +65,32 @@ export function quadrantLabel(q: TaskQuadrant): string {
     case 'notUrgentNotImportant':
       return '第4象限（緊急でも重要でもない）';
   }
+}
+
+export function toTaskRow(task: Task): TaskRow {
+  return {
+    id: task.id,
+    title: task.title,
+    priority: task.priority,
+    status: task.status,
+    due: task.due,
+    category: task.category,
+    tag: task.tag,
+    filter: task.filter,
+    quadrant: task.quadrant,
+  };
+}
+
+export function toTaskKanbanCard(task: Task): KanbanCardData {
+  return {
+    id: task.id,
+    title: task.title,
+    status: task.status,
+    priority: task.priority,
+    category: task.category,
+    tag: task.tag,
+    quadrant: task.quadrant,
+    // Kanban 上のサブ情報としては「期限」を表示する想定
+    meta: task.due,
+  };
 }

@@ -1,7 +1,8 @@
 // src/base/kanban/BaseKanbanBoard.tsx
 import type { BaseKanbanBoardProps } from '@base/kanban/baseKanbanBoardTypes';
+import { BaseKanbanCard } from '@base/card/BaseKanbanCard';
 
-export function BaseKanbanBoard({ columns, onCardClick }: BaseKanbanBoardProps) {
+export function BaseKanbanBoard({ columns, onCardClick, renderCard }: BaseKanbanBoardProps) {
   return (
     <div className="kanban-board">
       <div className="kanban-board__columns">
@@ -11,19 +12,21 @@ export function BaseKanbanBoard({ columns, onCardClick }: BaseKanbanBoardProps) 
               <h3 className="kanban-column__title">{column.title}</h3>
               {column.badge && <span className="kanban-column__badge">{column.badge}</span>}
             </header>
+
             <div className="kanban-column__body">
               {column.cards.map((card) => (
+                // ★ wrapper は article/div などにして、クリックをここで拾う
                 <article
                   key={card.id}
-                  className="kanban-card"
-                  onClick={() => onCardClick?.(card, column)}
+                  className="kanban-column__item"
+                  onClick={onCardClick ? () => onCardClick(card, column) : undefined}
                 >
-                  <div className="kanban-card__title">{card.title}</div>
-                  {(card.meta || card.tag) && (
-                    <div className="kanban-card__meta">
-                      {card.meta && <span>{card.meta}</span>}
-                      {card.tag && <span className="kanban-card__tag">{card.tag}</span>}
-                    </div>
+                  {renderCard ? (
+                    // ★ カスタム描画（Domain から差し込む）
+                    renderCard(card, column)
+                  ) : (
+                    // ★ デフォルトは BaseKanbanCard
+                    <BaseKanbanCard title={card.title} meta={card.meta} quadrant={card.quadrant} />
                   )}
                 </article>
               ))}

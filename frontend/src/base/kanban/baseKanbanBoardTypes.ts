@@ -1,12 +1,13 @@
+import type { Task } from '@shared/task/TaskTypes';
 import type { ReactNode } from 'react';
 
 export type KanbanColumnId = string;
 
-export type KanbanCardData = {
-  id: string;
-  title: string;
-  meta?: string;
-  tag?: string;
+export type KanbanCardData = Pick<
+  Task,
+  'id' | 'title' | 'status' | 'priority' | 'category' | 'tag' | 'quadrant'
+> & {
+  meta?: string; // 期限や短い補足を入れる用
 };
 
 export type KanbanColumnData = {

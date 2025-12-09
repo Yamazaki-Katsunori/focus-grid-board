@@ -1,7 +1,7 @@
 /* src/styles/kanban.css */
 @layer components {
   .kanban-card {
-    @apply flex flex-col gap-1 rounded-lg border border-border-subtle bg-white p-3 text-xs shadow-xs;
+    @apply border-border-subtle flex flex-col gap-1 rounded-lg border bg-white p-3 text-xs shadow-xs;
   }
 
   .kanban-card__header {
@@ -9,11 +9,11 @@
   }
 
   .kanban-card__title {
-    @apply font-medium text-text-main;
+    @apply text-text-main font-medium;
   }
 
   .kanban-card__meta {
-    @apply text-[11px] text-text-muted;
+    @apply text-text-muted text-[11px];
   }
 
   .kanban-card__tag {
@@ -25,7 +25,7 @@
   }
 
   .kanban-card__footer {
-    @apply mt-2 text-[11px] text-text-muted;
+    @apply text-text-muted mt-2 text-[11px];
   }
 
   .kanban-board {

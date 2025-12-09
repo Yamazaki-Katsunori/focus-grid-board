@@ -8,7 +8,7 @@ import {
   BaseTableCell,
 } from '@base/table/BaseTablePrimitives';
 
-import type { TaskRow } from '@shared/task/TaskListTypes';
+import type { TaskRow } from '@shared/task/forTaskDisplayTypes';
 import {
   priorityLabel,
   priorityToColor,

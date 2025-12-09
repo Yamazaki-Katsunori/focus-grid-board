@@ -14,9 +14,8 @@ import {
   statusLabel,
   statusToColor,
 } from '@shared/task/taskPresentation';
-import type { TaskRow } from '@shared/task/TaskListTypes';
 
-export function QuadrantTaskTable({ items }: QuadrantTaskTableProps) {
+export function QuadrantTaskTable({ taskRows }: QuadrantTaskTableProps) {
   return (
     <div className="overflow-x-auto">
       <BaseTable className="data-table--compact">
@@ -48,7 +47,7 @@ export function QuadrantTaskTable({ items }: QuadrantTaskTableProps) {
         </BaseTableHead>
 
         <BaseTableBody>
-          {items.map((row: TaskRow) => (
+          {taskRows.map((row) => (
             <BaseTableRow key={row.id}>
               {/* DnD ハンドル（今は見た目だけ） */}
               <BaseTableCell className="text-text-muted px-1 text-center align-middle leading-none">
