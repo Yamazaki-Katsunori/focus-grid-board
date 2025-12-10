@@ -3,8 +3,12 @@ import { BaseFormField } from '@base/form/formField/BaseFormField';
 import { BaseInput } from '@base/input/BaseInput';
 import { Button } from '@base/button/Button';
 import { useState } from 'react';
+import { useNavigation } from 'react-router';
 
 export function LoginForm() {
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,11 +16,7 @@ export function LoginForm() {
   const passwordError = password === '' ? 'パスワードを入力してください。' : undefined;
 
   return (
-    <BaseForm
-      onSubmit={(event) => {
-        event.preventDefault(); //ログイン処理}}
-      }}
-    >
+    <BaseForm method="post">
       <div className="form__header">
         <h1 className="form__title">ログイン</h1>
         <p className="form__description">FocusGrid Board にサインインします。</p>
@@ -56,7 +56,7 @@ export function LoginForm() {
 
       <div className="form__actions">
         <Button variant="primary" type="submit" fullWidth>
-          ログイン
+          {isSubmitting ? 'ログイン中…' : 'ログイン'}
         </Button>
       </div>
     </BaseForm>

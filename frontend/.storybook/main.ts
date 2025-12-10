@@ -23,6 +23,7 @@ const config: StorybookConfig = {
       plugins: [tailwindcss()],
       resolve: {
         alias: {
+          '@app': '/src/app',
           '@base': '/src/base',
           '@case': '/src/case',
           '@domain': '/src/domain',

@@ -10,4 +10,8 @@ const meta: Meta<typeof BaseSpinner> = {
 export default meta;
 type Story = StoryObj<typeof BaseSpinner>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    size: 'lg',
+  },
+};

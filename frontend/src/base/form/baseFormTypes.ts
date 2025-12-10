@@ -1,5 +1,7 @@
-import type { ReactNode, FormHTMLAttributes } from 'react';
+import type { ReactNode } from 'react';
+import type { FormProps } from 'react-router';
 
-export type BaseFormProps = FormHTMLAttributes<HTMLFormElement> & {
+export type BaseFormProps = FormProps & {
+  className?: string;
   children: ReactNode;
 };
