@@ -2,10 +2,10 @@
 
 /* 色・サイズ用のカスタムプロパティ（あとで調整しやすいように） */
 :root {
-  --fg-spinner-color: hsl(217 82% 56%);      /* アクセントブルー */
-  --fg-spinner-track: hsl(220 15% 86%);      /* 薄いグレーのトラック */
+  --fg-spinner-color: hsl(217 82% 56%); /* アクセントブルー */
+  --fg-spinner-track: hsl(220 15% 86%); /* 薄いグレーのトラック */
 
-  --fg-spinner-size-sm: 1rem;    /* 16px */
+  --fg-spinner-size-sm: 1rem; /* 16px */
   --fg-spinner-size-md: 1.25rem; /* 20px */
   --fg-spinner-size-lg: 1.75rem; /* 28px */
 
