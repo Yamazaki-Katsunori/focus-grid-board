@@ -1,6 +1,6 @@
 // src/app/layout/RootLayout.tsx
 import { Outlet, useNavigation } from 'react-router';
-import { BaseSpinner } from '@base/animation/spinner/BaseSpinner';
+import { FullScreenLoading } from '@case/loding/FullScreenLoding';
 
 export function RootLayout() {
   const navigation = useNavigation();
@@ -14,12 +14,7 @@ export function RootLayout() {
       <Outlet />
 
       {/* 画面共通のローディングオーバーレイ */}
-      {isLoading && (
-        <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-black/10">
-          {/* 余計な白い箱はなくして、Spinner だけ */}
-          <BaseSpinner size="lg" />
-        </div>
-      )}
+      {isLoading && <FullScreenLoading />}
     </div>
   );
 }
