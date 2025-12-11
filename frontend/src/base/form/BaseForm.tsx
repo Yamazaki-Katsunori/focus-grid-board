@@ -1,11 +1,10 @@
 import type { BaseFormProps } from '@base/form/baseFormTypes';
+import { classNames } from '@lib/classNames';
 import { Form } from 'react-router';
 
 export function BaseForm({ className, children, ...props }: BaseFormProps) {
-  const classes = ['form', className].filter(Boolean).join(' ');
-
   return (
-    <Form className={classes} {...props}>
+    <Form className={classNames('form', className)} {...props}>
       {children}
     </Form>
   );

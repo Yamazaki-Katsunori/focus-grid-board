@@ -1,10 +1,6 @@
 import type { BaseTextAreaProps } from '@base/textarea/BaseTextAreaTypes';
+import { classNames } from '@lib/classNames';
 
 export function BaseTextArea({ className, ...props }: BaseTextAreaProps) {
-  return (
-    <textarea
-      className={['form-input', 'min-h-32', className].filter(Boolean).join(' ')}
-      {...props}
-    />
-  );
+  return <textarea className={classNames('form-input', 'min-h-32', className)} {...props} />;
 }

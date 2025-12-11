@@ -1,6 +1,6 @@
 import type { BaseFormFieldProps } from '@base/form/formField/baseFormFieldTypes';
 import { BaseLabel } from '@base/input/label/BaseLabel';
-import { BaseFieldMessage } from '../fieldMessage/BaseFieldMessage';
+import { BaseFieldMessage } from '@base/form/fieldMessage/BaseFieldMessage';
 
 export function BaseFormField({
   label,

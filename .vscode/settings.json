@@ -46,7 +46,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.origanizeImports": "explicit"
-    }
+    },
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "javascript.preferences.importModuleSpecifier": "non-relative"
+
   },
 
   // （TSX も Prettier で保存時フォーマットしたい場合）
@@ -56,7 +59,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": {
       "source.origanizeImports": "explicit"
-    }
+    },
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "javascript.preferences.importModuleSpecifier": "non-relative"
   },
 
   // ★ PHP 向けオーバーライド（ここで Pint を指定）

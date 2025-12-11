@@ -11,6 +11,7 @@ export default defineConfig({
       '@base': '/src/base',
       '@case': '/src/case',
       '@domain': '/src/domain',
+      '@lib': '/src/lib',
       '@shared': '/src/shared',
       '@styles': '/src/styles',
       '@app-types': '/src/types',

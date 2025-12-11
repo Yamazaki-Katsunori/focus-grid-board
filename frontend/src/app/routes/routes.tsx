@@ -11,6 +11,7 @@ import { FocusTaskMatrixBoard } from '@domain/focusGrid/focusTaskMatrixBoard/Foc
 import { ROWS } from '@domain/focusGrid/demoTaskData';
 import { FocusKanbanBoard } from '@domain/focusGrid/focusKanbanBoard/FocusKanbanBoard';
 import { FocusTaskTable } from '@domain/focusGrid/focusTaskTable/FocusTaskTable';
+import { focusMainTabLoader } from '@domain/focusGrid/focusMainTab/focusMainTabRoute';
 
 export const router = createBrowserRouter([
   {
@@ -33,9 +34,13 @@ export const router = createBrowserRouter([
         loader: focusGridLoader,
         children: [
           { index: true, element: <Navigate to="matrix" replace /> },
-          { path: 'matrix', element: <FocusTaskMatrixBoard tasks={ROWS} /> },
-          { path: 'board', element: <FocusKanbanBoard /> },
-          { path: 'table', element: <FocusTaskTable /> },
+          {
+            path: 'matrix',
+            element: <FocusTaskMatrixBoard tasks={ROWS} />,
+            loader: focusMainTabLoader,
+          },
+          { path: 'board', element: <FocusKanbanBoard />, loader: focusMainTabLoader },
+          { path: 'table', element: <FocusTaskTable />, loader: focusMainTabLoader },
 
           // timeline / calender はまた後で
         ],
