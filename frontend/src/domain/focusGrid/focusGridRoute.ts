@@ -4,7 +4,7 @@ import type { ActionFunctionArgs, LoaderFunctionArgs } from 'react-router';
 
 export async function focusGridLoader(_args: LoaderFunctionArgs) {
   // ここでタスク一覧やユーザー情報をロードする…のは後で
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 800));
 
   return null;
 }

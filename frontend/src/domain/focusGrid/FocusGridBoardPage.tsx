@@ -7,7 +7,7 @@ import { AppSidebar } from '@domain/layout/AppSidebar';
 import { useState } from 'react';
 
 export function FocusGridBoardPage() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleToggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);

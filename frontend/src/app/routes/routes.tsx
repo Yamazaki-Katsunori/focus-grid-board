@@ -12,6 +12,8 @@ import { ROWS } from '@domain/focusGrid/demoTaskData';
 import { FocusKanbanBoard } from '@domain/focusGrid/focusKanbanBoard/FocusKanbanBoard';
 import { FocusTaskTable } from '@domain/focusGrid/focusTaskTable/FocusTaskTable';
 import { focusMainTabLoader } from '@domain/focusGrid/focusMainTab/focusMainTabRoute';
+import { CreateTaskPage } from '@domain/createTask/CreateTaskPage';
+import { createTaskAction, createTaskLoader } from '@domain/createTask/createTaskRoute';
 
 export const router = createBrowserRouter([
   {
@@ -22,16 +24,19 @@ export const router = createBrowserRouter([
         index: true,
         element: <Navigate to="/login" replace />,
       },
+      // login画面 route
       {
         path: '/login',
         element: <LoginPage />,
         loader: loginLoader,
         action: loginAction,
       },
+      // main画面 route
       {
         path: '/focus-grid-board',
         element: <FocusGridBoardPage />,
         loader: focusGridLoader,
+        // main画面 各種タブ route
         children: [
           { index: true, element: <Navigate to="matrix" replace /> },
           {
@@ -44,6 +49,12 @@ export const router = createBrowserRouter([
 
           // timeline / calender はまた後で
         ],
+      },
+      {
+        path: '/focus-grid-board/create-task',
+        element: <CreateTaskPage />,
+        loader: createTaskLoader,
+        action: createTaskAction,
       },
       {
         path: '*',

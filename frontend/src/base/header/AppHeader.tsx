@@ -1,4 +1,5 @@
 import type { AppHeaderProps } from '@base/header/appHeaderTypes';
+import { Menu } from 'lucide-react';
 
 // src/base/header/AppHeader.tsx
 export function AppHeader({ onToggleSidebar }: AppHeaderProps) {
@@ -14,15 +15,17 @@ export function AppHeader({ onToggleSidebar }: AppHeaderProps) {
             onClick={onToggleSidebar}
           >
             <span className="sr-only">メニュー</span>
-            <svg viewBox="0 0 24 24" width={18} height={18} aria-hidden="true">
-              <path
-                d="M4 7h16M4 12h16M4 17h16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-            </svg>
+            <Menu
+              viewBox="0 0 24 24"
+              width={18}
+              height={18}
+              aria-hidden="true"
+              d="M4 7h16M4 12h16M4 17h16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            />
           </button>
         </div>
 

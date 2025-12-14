@@ -19,7 +19,7 @@ const SIDEBAR_ITEMS: BaseSidebarItemType[] = [
     icon: <LayoutDashboard className="h-4 w-4" aria-hidden="true" />,
   },
   {
-    id: 'new-task',
+    id: 'create-task',
     label: '新規タスク作成',
     icon: <FilePlus2 className="h-4 w-4" aria-hidden="true" />,
   },
@@ -39,7 +39,7 @@ function getActiveSidebarId(pathname: string): string {
 
   // 一旦ホームをボード扱いに
   if (pathname.startsWith('/focus-grid-board/home')) {
-    return 'board';
+    return 'matrix';
   }
 
   if (pathname.startsWith('/focus-grid-board/create-task')) {
@@ -70,12 +70,15 @@ export function AppSidebar({ isOpen }: AppSidebarProps) {
   // hook
   const handleItemClick = (id: string) => {
     switch (id) {
-      case 'board':
+      case 'home':
         navigate('/focus-grid-board/matrix');
         break;
-      case 'new-task':
+      case 'board':
+        navigate('/focus-grid-board/board');
+        break;
+      case 'create-task':
         // ★ ここは後で "2. タスク新規作成画面へのルーティング" で正式なパスに差し替える
-        navigate('/focus-grid-board/tasks/new');
+        navigate('/focus-grid-board/create-task');
         break;
       case 'settings':
         // 設定画面を作ったらそちらへ
