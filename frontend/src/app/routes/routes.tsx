@@ -14,6 +14,7 @@ import { FocusTaskTable } from '@domain/focusGrid/focusTaskTable/FocusTaskTable'
 import { focusMainTabLoader } from '@domain/focusGrid/focusMainTab/focusMainTabRoute';
 import { CreateTaskPage } from '@domain/createTask/CreateTaskPage';
 import { createTaskAction, createTaskLoader } from '@domain/createTask/createTaskRoute';
+import { logoutAction } from '@domain/auth/logout.Route';
 
 export const router = createBrowserRouter([
   {
@@ -31,6 +32,11 @@ export const router = createBrowserRouter([
         loader: loginLoader,
         action: loginAction,
       },
+      {
+        path: 'logout',
+        action: logoutAction,
+      },
+
       // main画面 route
       {
         path: '/focus-grid-board',

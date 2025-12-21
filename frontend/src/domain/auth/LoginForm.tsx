@@ -2,18 +2,17 @@ import { BaseForm } from '@base/form/BaseForm';
 import { BaseFormField } from '@base/form/formField/BaseFormField';
 import { BaseInput } from '@base/input/BaseInput';
 import { Button } from '@base/button/Button';
-import { useState } from 'react';
-import { useNavigation } from 'react-router';
+import { useActionData, useNavigation } from 'react-router';
+import type { LoginActionError } from '@domain/auth/loginSchema';
 
 export function LoginForm() {
+  const actionData = useActionData() as LoginActionError | undefined;
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const emailError = email === '' ? 'メールアドレスを入力してください。' : undefined;
-  const passwordError = password === '' ? 'パスワードを入力してください。' : undefined;
+  const errors = actionData?.errors ?? {};
+  const emailError = errors?.email?.[0];
+  const passwordError = errors?.password?.[0];
 
   return (
     <BaseForm method="post">
@@ -32,9 +31,9 @@ export function LoginForm() {
         <BaseInput
           id="email"
           type="email"
+          name="email"
           autoComplete="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          defaultValue={actionData?.values.email as string | undefined}
         />
       </BaseFormField>
 
@@ -48,9 +47,9 @@ export function LoginForm() {
         <BaseInput
           id="password"
           type="password"
+          name="password"
           autoComplete="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          defaultValue={actionData?.values.password as string | undefined}
         />
       </BaseFormField>
 

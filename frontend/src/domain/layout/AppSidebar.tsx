@@ -1,9 +1,9 @@
 // src/domain/layout/AppSidebar.tsx
 import { useMemo } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import { useFetcher, useLocation, useNavigate } from 'react-router';
 import { BaseSidebar } from '@base/sidebar/BaseSidebar';
 import type { BaseSidebarItemType } from '@base/sidebar/baseSidebarTpyes';
-import { LayoutDashboard, FilePlus2, Settings, Home } from 'lucide-react';
+import { LayoutDashboard, FilePlus2, Settings, Home, LogOut } from 'lucide-react';
 import type { AppSidebarProps } from '@domain/layout/appSidebarTypes';
 
 // スライダーアイテム
@@ -29,6 +29,12 @@ const SIDEBAR_ITEMS: BaseSidebarItemType[] = [
     icon: <Settings className="h-4 w-4" aria-hidden="true" />,
     // まだ画面がないなら disabled: true でもOK
     // disabled: true,
+  },
+  // ログアウト
+  {
+    id: 'logout',
+    label: 'ログアウト',
+    icon: <LogOut className="h-4 w-4" aria-hidden="true" />,
   },
 ];
 
@@ -61,6 +67,7 @@ function getActiveSidebarId(pathname: string): string {
 export function AppSidebar({ isOpen }: AppSidebarProps) {
   const location = useLocation();
   const navigate = useNavigate();
+  const fetcher = useFetcher(); // ★ 追加
 
   const activeId = useMemo(() => getActiveSidebarId(location.pathname), [location.pathname]);
 
@@ -83,6 +90,10 @@ export function AppSidebar({ isOpen }: AppSidebarProps) {
       case 'settings':
         // 設定画面を作ったらそちらへ
         navigate('/settings');
+        break;
+
+      case 'logout':
+        fetcher.submit(null, { method: 'post', action: '/logout' });
         break;
       default:
         break;
