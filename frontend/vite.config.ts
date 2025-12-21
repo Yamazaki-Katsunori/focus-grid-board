@@ -7,9 +7,11 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
+      '@app': '/src/app',
       '@base': '/src/base',
       '@case': '/src/case',
       '@domain': '/src/domain',
+      '@lib': '/src/lib',
       '@shared': '/src/shared',
       '@styles': '/src/styles',
       '@app-types': '/src/types',

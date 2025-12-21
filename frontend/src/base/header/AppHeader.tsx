@@ -1,38 +1,45 @@
+import type { AppHeaderProps } from '@base/header/appHeaderTypes';
+import { Menu } from 'lucide-react';
+
 // src/base/header/AppHeader.tsx
-export function AppHeader() {
+export function AppHeader({ onToggleSidebar }: AppHeaderProps) {
   return (
     <header className="app-header">
       <div className="app-header__inner">
-        {/* ← 左：ナビ + ハンバーガー */}
+        {/* 左：ハンバーガーだけ */}
         <div className="app-header__left">
-          <nav className="app-header__nav">
-            <span className="app-header__nav-item">ボード</span>
-            <span className="app-header__nav-item">タスク</span>
-            <span className="app-header__nav-item">設定</span>
-          </nav>
-
-          <button type="button" className="app-header__hamburger" aria-label="メニューを開く">
+          <button
+            type="button"
+            className="app-header__hamburger"
+            aria-label="メニューを開く"
+            onClick={onToggleSidebar}
+          >
             <span className="sr-only">メニュー</span>
-            <svg viewBox="0 0 24 24" width={18} height={18} aria-hidden="true">
-              <path
-                d="M4 7h16M4 12h16M4 17h16"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-              />
-            </svg>
+            <Menu
+              viewBox="0 0 24 24"
+              width={18}
+              height={18}
+              aria-hidden="true"
+              d="M4 7h16M4 12h16M4 17h16"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+            />
           </button>
         </div>
 
-        {/* → 右：ロゴ + タイトル */}
-        <div className="app-header__brand">
+        {/* 中央：ロゴ + タイトル + サブタイトル */}
+        <div className="app-header__center">
           <div className="app-header__logo" />
-          <div>
+          <div className="app-header__text">
             <div className="app-header__title">FocusGrid Board</div>
             <div className="app-header__subtitle">フォーカスすべきタスクを見える化するボード</div>
           </div>
         </div>
+
+        {/* 右：今は空（将来ユーザーメニューとか） */}
+        <div className="app-header__right" />
       </div>
     </header>
   );

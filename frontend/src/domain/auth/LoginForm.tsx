@@ -2,21 +2,20 @@ import { BaseForm } from '@base/form/BaseForm';
 import { BaseFormField } from '@base/form/formField/BaseFormField';
 import { BaseInput } from '@base/input/BaseInput';
 import { Button } from '@base/button/Button';
-import { useState } from 'react';
+import { useActionData, useNavigation } from 'react-router';
+import type { LoginActionError } from '@domain/auth/loginSchema';
 
 export function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const actionData = useActionData() as LoginActionError | undefined;
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === 'submitting';
 
-  const emailError = email === '' ? 'メールアドレスを入力してください。' : undefined;
-  const passwordError = password === '' ? 'パスワードを入力してください。' : undefined;
+  const errors = actionData?.errors ?? {};
+  const emailError = errors?.email?.[0];
+  const passwordError = errors?.password?.[0];
 
   return (
-    <BaseForm
-      onSubmit={(event) => {
-        event.preventDefault(); //ログイン処理}}
-      }}
-    >
+    <BaseForm method="post">
       <div className="form__header">
         <h1 className="form__title">ログイン</h1>
         <p className="form__description">FocusGrid Board にサインインします。</p>
@@ -32,9 +31,9 @@ export function LoginForm() {
         <BaseInput
           id="email"
           type="email"
+          name="email"
           autoComplete="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          defaultValue={actionData?.values.email as string | undefined}
         />
       </BaseFormField>
 
@@ -48,15 +47,15 @@ export function LoginForm() {
         <BaseInput
           id="password"
           type="password"
+          name="password"
           autoComplete="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          defaultValue={actionData?.values.password as string | undefined}
         />
       </BaseFormField>
 
       <div className="form__actions">
         <Button variant="primary" type="submit" fullWidth>
-          ログイン
+          {isSubmitting ? 'ログイン中…' : 'ログイン'}
         </Button>
       </div>
     </BaseForm>

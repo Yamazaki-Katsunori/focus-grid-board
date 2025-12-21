@@ -1,5 +1,6 @@
 // src/base/button/Button.tsx
 import type { ButtonProps } from '@base/button/buttonTypes';
+import { classNames } from '@lib/classNames';
 
 export function Button({
   variant = 'primary',
@@ -8,17 +9,26 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
-  const classes = [
-    'btn',
-    variant && `btn--${variant}`,
-    fullWidth ? 'btn--full' : 'btn--normal',
-    className,
-  ]
-    .filter(Boolean)
-    .join(' ');
+  // --- 元の classes 定義 ---
+  // const classes = [
+  //   'btn',
+  //   variant && `btn--${variant}`,
+  //   fullWidth ? 'btn--full' : 'btn--normal',
+  //   className,
+  // ]
+  //   .filter(Boolean)
+  //   .join(' ');
 
   return (
-    <button className={classes} {...props}>
+    <button
+      className={classNames(
+        'btn',
+        variant && `btn--${variant}`,
+        fullWidth ? 'btn--full' : 'btn--normal',
+        className,
+      )}
+      {...props}
+    >
       {children}
     </button>
   );
