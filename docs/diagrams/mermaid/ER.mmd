@@ -1,0 +1,124 @@
+erDiagram
+
+%% =========================
+%% Physical Design Notes (PostgreSQL v17)
+%% =========================
+%% - ID strategy:
+%%   * Internal PK: bigint auto_increment (id)
+%%   * External reference: unique_id (ULID) char(26) UNIQUE
+%% - Data types:
+%%   * unique_id: char(26)
+%%   * email: varchar(255)
+%%   * status/quadrant/priority: varchar(32) + CHECK
+%%   * description: text
+%%   * planned dates: date
+%%   * timestamps: timestamptz
+%%   * payload: jsonb
+%% - Business/ops rules:
+%%   * Events are append-only (no UPDATE/DELETE)
+%%   * sort_order uses "gap" strategy (step=10)
+%%   * archived is represented by status='archived'
+%%   * default query filters out archived: status <> 'archived'
+%% - Constraints policy:
+%%   * SQL-expressible constraints live in DB (CHECK/UNIQUE/FK/INDEX)
+%%   * If Laravel schema builder cannot express CHECK, use raw SQL in migration
+
+%% =========================
+%% Resources（リソース）
+%% =========================
+
+USERS {
+  bigint id PK                 "NOT NULL / auto_increment"
+  char unique_id               "ULID外部参照 / NOT NULL / UNIQUE / char(26)"
+
+  varchar email                "NOT NULL / UNIQUE / varchar(255)"
+  varchar password_hash        "NOT NULL"
+  varchar phone                "NULL（SMS認証用）"
+
+  varchar first_name           "NULL"
+  varchar last_name            "NULL"
+
+  timestamptz created_at       "NOT NULL"
+  timestamptz updated_at       "NOT NULL"
+}
+
+FOCUS_CATEGORIES {
+  bigint id PK                 "NOT NULL / auto_increment"
+  char unique_id               "ULID外部参照 / NOT NULL / UNIQUE / char(26)"
+  bigint user_id FK            "NOT NULL"
+
+  varchar name                 "NOT NULL"
+  timestamptz created_at       "NOT NULL"
+  timestamptz updated_at       "NOT NULL"
+}
+
+FOCUS_TAGS {
+  bigint id PK                 "NOT NULL / auto_increment"
+  char unique_id               "ULID外部参照 / NOT NULL / UNIQUE / char(26)"
+  bigint user_id FK            "NOT NULL"
+
+  varchar name                 "NOT NULL"
+  varchar color                "NULL"
+  timestamptz created_at       "NOT NULL"
+  timestamptz updated_at       "NOT NULL"
+}
+
+FOCUS_TASKS {
+  bigint id PK                 "NOT NULL / auto_increment"
+  char unique_id               "ULID外部参照 / NOT NULL / UNIQUE / char(26)"
+  bigint user_id FK            "NOT NULL"
+
+  varchar title                "NOT NULL"
+  text description             "NULL / text"
+
+  varchar status               "NOT NULL / varchar(32) / CHECK: backlog|todo|doing|blocked|done|archived|pending"
+  varchar quadrant             "NOT NULL / varchar(32) / CHECK: q1|q2|q3|q4"
+  varchar priority             "NOT NULL / varchar(32) / CHECK: low|normal|high"
+
+  bigint category_id FK        "NOT NULL（未分類はseedで割当）"
+
+  date scheduled_start_date    "NOT NULL / date"
+  date scheduled_end_date      "NOT NULL / date"
+  timestamptz completed_at     "NULL / timestamptz"
+  timestamptz archived_at      "NULL / timestamptz"
+
+  integer sort_order           "NOT NULL（reorderは10刻みで採番）"
+  integer lock_version         "NOT NULL / default 0"
+
+  timestamptz created_at       "NOT NULL"
+  timestamptz updated_at       "NOT NULL"
+}
+
+FOCUS_TASK_TAG {
+  bigint task_id FK            "NOT NULL"
+  bigint tag_id FK             "NOT NULL"
+  timestamptz created_at       "NOT NULL"
+}
+
+FOCUS_TASK_EVENTS {
+  bigint id PK                 "NOT NULL / auto_increment"
+  char unique_id               "ULID外部参照 / NOT NULL / UNIQUE / char(26)"
+
+  bigint task_id FK            "NOT NULL"
+  bigint user_id FK            "NOT NULL"
+
+  varchar type                 "NOT NULL / varchar(64)程度を想定"
+  jsonb payload                "NULL / jsonb"
+  timestamptz occurred_at      "NOT NULL / timestamptz"
+}
+
+%% =========================
+%% Relationships（リレーション）
+%% =========================
+
+USERS ||--o{ FOCUS_CATEGORIES : "has categories"
+USERS ||--o{ FOCUS_TAGS : "has tags"
+USERS ||--o{ FOCUS_TASKS : "has tasks"
+USERS ||--o{ FOCUS_TASK_EVENTS : "writes events"
+
+FOCUS_CATEGORIES ||--o{ FOCUS_TASKS : "categorizes"
+
+FOCUS_TASKS ||--o{ FOCUS_TASK_EVENTS : "has events"
+
+FOCUS_TASKS ||--o{ FOCUS_TASK_TAG : "tag mapping"
+FOCUS_TAGS  ||--o{ FOCUS_TASK_TAG : "tag mapping"

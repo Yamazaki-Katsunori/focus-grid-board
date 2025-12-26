@@ -18,7 +18,7 @@ RUN set -eux; \
     apt-get install -y --no-install-recommends \
       ca-certificates curl git unzip tar gzip xz-utils bzip2 \
       jq libpq-dev build-essential procps \
-      autoconf pkg-config zlib1g-dev libssl-dev \
+      autoconf pkg-config zlib1g-dev libssl-dev chromium \
     ; \
     rm -rf /var/lib/apt/lists/*; \
     \
