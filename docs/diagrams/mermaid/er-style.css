@@ -1,0 +1,13 @@
+/* ER の線を太くする（mermaidのバージョン差があるので複数セレクタで保険） */
+.relationshipLine,
+.er .relationshipLine,
+.edgePath path,
+.edgePath .path {
+  stroke-width: 2.5px !important;
+}
+
+/* 枠線も少し太く（任意） */
+.entityBox,
+.er .entityBox {
+  stroke-width: 2px !important;
+}
