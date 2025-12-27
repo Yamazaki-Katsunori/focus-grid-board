@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('focus_tags', function (Blueprint $table) {
             $table->id()->comment('内部参照ID');
             $table->char('unique_id', 26)->unique()->comment('外部参照ID / ULID');
-            $table->foreignId('user_id')->constrained('users')->restrictOnDelete()->comment('外部キー : ユーザー');
+            $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
             $table->string('name')->comment('タグ名');
             $table->string('color')->nullable()->comment('タグカラー');
             $table->timestampsTz();

@@ -14,8 +14,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('focus_task_tag', function (Blueprint $table) {
-            $table->foreignId('task_id')->constrained('focus_tasks')->restrictOnDelete()->comment('外部キー : タスクID');
-            $table->foreignId('tag_id')->constrained('focus_tags')->restrictOnDelete()->comment('外部キー : タグID');
+            $table->foreignId('task_id')->constrained('focus_tasks')->restrictOnDelete();
+            $table->foreignId('tag_id')->constrained('focus_tags')->restrictOnDelete();
             $table->timestampTz('created_at');
             $table->unique(['task_id', 'tag_id']);
         });

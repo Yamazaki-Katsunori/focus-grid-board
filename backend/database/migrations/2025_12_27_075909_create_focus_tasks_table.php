@@ -18,8 +18,8 @@ return new class extends Migration
             $table->id()->comment('内部参照ID');
             $table->char('unique_id', 26)->unique()->comment('外部参照ID / ULID');
 
-            $table->foreignId('user_id')->constrained('users')->restrictOnDelete()->comment('外部キー : ユーザー');
-            $table->foreignId('category_id')->constrained('focus_categories')->restrictOnDelete()->comment('外部キー : カテゴリー');
+            $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
+            $table->foreignId('category_id')->constrained('focus_categories')->restrictOnDelete();
 
             $table->string('title')->comment('タスクタイトル');
             $table->text('description')->nullable()->comment('タスク本文');

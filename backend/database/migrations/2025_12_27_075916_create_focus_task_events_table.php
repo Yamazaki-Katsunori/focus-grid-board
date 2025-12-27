@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id()->comment('内部参照ID');
             $table->char('unique_id', 26)->unique()->comment('外部参照ID / ULID');
 
-            $table->foreignId('task_id')->constrained('focus_tasks')->restrictOnDelete()->comment('外部キー : タスクID');
-            $table->foreignId('user_id')->constrained('users')->restrictOnDelete()->comment('外部キー : ユーザーID');
+            $table->foreignId('task_id')->constrained('focus_tasks')->restrictOnDelete();
+            $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
 
             $table->string('type', 64)->comment('イベント種別');
             $table->jsonb('payload')->nullable()->comment('イベント詳細');
