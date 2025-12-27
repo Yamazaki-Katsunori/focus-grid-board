@@ -13,15 +13,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('focus_categories', function (Blueprint $table) {
             $table->id()->comment('内部参照ID');
             $table->char('unique_id', 26)->unique()->comment('外部参照ID / ULID');
-            $table->string('first_name')->nullable()->comment('名');
-            $table->string('last_name')->nullable()->comment('姓');
-            $table->string('email', 255)->unique()->comment('メールアドレス');
-            $table->string('password')->comment('パスワード / 保存時はハッシュ化');
-            $table->string('phone')->nullable()->comment('電話番号');
+            $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
+            $table->string('name')->comment('カテゴリー名');
             $table->timestampsTz();
+
+            $table->unique(['user_id', 'name']);
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('focus_categories');
     }
 };
