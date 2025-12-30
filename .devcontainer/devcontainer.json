@@ -40,6 +40,8 @@
         "open-southeners.laravel-pint",
         "felixfbecker.php-debug",
         "laravel.vscode-laravel",
+        "dansysanalyst.pest-snippets",
+        "recca0120.vscode-phpunit",
         "amiralizadeh9480.laravel-extra-intellisense",
         "ms-vscode.vscode-typescript-next",
         "yoavbls.pretty-ts-errors",

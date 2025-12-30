@@ -68,7 +68,9 @@
   "[php]": {
     "editor.tabSize": 4,
     "editor.formatOnSave": true,
-    "editor.rulers": [120],
-    "editor.defaultFormatter": "open-southeners.laravel-pint"
+    "editor.wordWrap": "on",
+    "editor.rulers": [150],
+    "editor.defaultFormatter": "open-southeners.laravel-pint",
+
   }
 }

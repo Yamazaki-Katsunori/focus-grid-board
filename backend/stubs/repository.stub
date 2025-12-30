@@ -1,0 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DummyNamespace;
+
+use {{ interfaceImport }};
+
+final class DummyClass implements {{ interfaceShort }}
+{
+    public function __construct()
+    {
+        //
+    }
+}
